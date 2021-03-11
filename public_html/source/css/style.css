@@ -1,0 +1,189 @@
+@font-face{
+
+    font-family: 'Exo2';
+
+    src: url('../fonts/Exo2.ttf') format('truetype');
+
+    font-weight: normal;
+
+    font-style: normal;
+
+}
+@font-face{
+
+    font-family: 'Jura';
+
+    src: url('../fonts/Jura.ttf') format('truetype');
+
+    font-weight: normal;
+
+    font-style: normal;
+
+}
+@font-face{
+
+    font-family: 'Pilosopher';
+
+    src: url('../fonts/Pilosopher.ttf') format('truetype');
+
+    font-weight: normal;
+
+    font-style: normal;
+
+}
+body{
+    background: #524f49;
+}
+.wrapper{
+    min-width: 700px;
+    max-width: 1900px;
+    margin: 0 auto;
+}
+.container{
+    width: 700px;
+    margin: 0 auto;
+
+
+}
+.flex_container{
+    display: flex;
+    padding: 20px;
+}
+.create_algorithm{
+    margin: 10px 20px 10px 20px ;
+    text-align: center;
+}
+.create_algorithm_container_input, .create_algorithm_container_btn,
+.create_record_container_input, .create_record_container_btn,
+.exec_record_container_checkbox,.record_container_input,.delete_record_container_btn{
+display: inline-block;
+}
+.dashboard{
+    margin: 10px 20px 10px 20px ;
+
+}
+.algorithm_container{
+    margin: 10px 20px 10px 20px ;
+    border: 2px solid darkblue;
+    position: relative;
+    display: block;
+}
+
+.algorithm_title{
+    text-align: center;
+}
+.algorithm_body{
+    margin: 10px 0 ;
+    text-align: center;
+}
+.create_record{
+    margin: 20px;
+}
+.items_record{
+    margin: 20px;
+    border: 3px solid #dbdad9;
+    border-radius: 10px;
+}
+
+.item_record{
+    padding: 10px;
+
+}
+.save_algorithm {
+    margin: 10px;
+    text-align: center;
+}
+.wrapper_dashboard{
+    flex-grow:2;
+    margin-right: 10px;
+}
+.control_algorithm_buttons, .algorithm_container{
+   text-align: center;
+    margin: 10px;
+    border: 1px solid lightslategrey;
+    border-radius: 10px;
+    padding: 10px;
+    background: #3d5770;
+}
+.wrapper_options{
+    text-align: center;
+}
+.item_option{
+    margin: 10px 0;
+}
+.wrapper_json{
+    text-align: left;
+    font-size: 16px;
+}
+.hidden{
+    display: none;
+}
+.codes_massages, .body_description{
+    text-align: left;
+}
+.wrapper_available_algorithms, .wrapper_dashboard, .available_options{
+    border: 2px solid #9ea3a2;
+    border-radius: 10px;
+    padding: 20px;
+    background: #2f3030;
+
+}
+.wrapper_create_algorithm_button{
+    text-align: center;
+}
+
+.wrapper_get_algorithm_button{
+    margin-bottom: 5px;
+}
+.get_algorithm_button{
+    width: 100%;
+}
+.delete_algorithm_button>img{
+    width: 20px;
+    height: 20px;
+}
+button{
+    border: 3px solid #a3a3a3;
+    border-radius: 5px;
+    background: white;
+    font-family: 'Pilosopher';
+}
+.save_algorithm_btn>img{
+    width: 30px;
+    height: 30px;
+}
+
+input {
+    border: 3px solid #cf4800;
+    border-radius: 5px;
+}
+.available_options{
+    color: #dbdad9;
+}
+
+.body_description{
+    font-family: 'Exo2';
+}
+
+li{
+    margin-bottom: 10px;
+}
+.btn_get_options{
+    margin-bottom: 10px;
+}
+pre{
+    font-family: 'Jura';
+}
+.message{
+    position: fixed;
+    border: 3px solid #dbdad9;
+    left: 35%;
+    top: 10%;
+    height: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #9ea3a2;
+    font-family: 'Pilosopher';
+    font-size: 20px;
+    opacity: 0.9;
+}

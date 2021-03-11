@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple keeper</title>
+    <link rel="shortcut icon" type="image/png" href="source/img/favicon.png"/>
+    <link rel="stylesheet" href="source/css/style.css">
+    <meta name="description" content="Простой органайзер для повседневных дел">
+    <script src="source/js/functions.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="container">
+        <div class="flex_container">
+            <div class="wrapper_dashboard">
+                <div class="dashboard">
+                    <div  class="algorithm_container">
+                        <div class="algorithm_title">
+                            <input type="text"  placeholder="введите имя алгоритма" class="input_algorithm_title">
+                        </div>
+                        <div class="algorithm_body">
+                            <div class="create_record">
+                                <div class="create_record_container_input">
+                                    <input class="create_record_input" type="text" placeholder="введите имя записи">
+                                </div>
+                                <div class="create_record_container_btn">
+                                    <button class="create_record_btn">создать запись</button>
+                                </div>
+                            </div>
+                            <div class="items_record hidden"></div>
+                        </div>
+                        <div class="save_algorithm">
+                            <button class="save_algorithm_btn" data-algorithmid="">
+                                <img src="source/img/btnSave.png" alt="">
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="wrapper_available_algorithms">
+                <div class="wrapper_create_algorithm_button">
+                    <button class="create_algorithm_button">Создать алгоритм</button>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper_options">
+            <button class="btn_get_options">Получить API</button>
+            <div class="available_options hidden">
+                <div class="item_option">
+                    <div class="wrapper_description">
+                        <h4 class="header_description">
+                            Status code and Success message:
+                        </h4>
+                        <div class="body_description">
+                            <ul class="codes_massages">
+                                <li class="code_massage">Успешный POST запрос - код ответа: 201, сообщение ответа: "POST request successful. Created"</li>
+                                <li class="code_massage">Успешный GET запрос - код ответа: 200, сообщение ответа: "GET request successful"</li>
+                                <li class="code_massage">Успешный GET запрос по ID - код ответа: 200, сообщение ответа: "GET_ID request successful. OK"</li>
+                                <li class="code_massage">Успешный GET запрос по ID, но на сервере ресурс с таким ID отсутствует - код ответа: 404, сообщение ответа: "Not Found"</li>
+                                <li class="code_massage">Успешный PUT запрос - код ответа: 204, сообщение ответа: "PUT request successful. No Data"</li>
+                                <li class="code_massage">Успешный DELETE запрос - код ответа: 204, сообщение ответа: "DELETE request successful. No Data"</li>
+                                <li class="code_massage">Успешный OPTIONS запрос - код ответа: 200, сообщение ответа: "OPTIONS request successful. OK"</li>
+                            </ul>
+                        </div>
+                        <h4 class="header_description">
+                            Status code and Error message:
+                        </h4>
+                        <div class="body_description">
+                            <ul class="codes_massages">
+                                <li class="code_massage">Внутренняя ошибка сервера - код ответа: 500, сообщение ответа: "Server error"</li>
+                                <li class="code_massage">Ошибка сервера при попытки подключения к базе данных - код ответа: 503, сообщение ответа: "error_db_connection"</li>
+                                <li class="code_massage">Ошибка сервера при запросе к базе данных. Запрос к серверу отправлен методом POST - код ответа: 502, сообщение ответа: "POST method error"</li>
+                                <li class="code_massage">Ошибка сервера при запросе к базе данных. Запрос к серверу отправлен методом GET - код ответа: 502, сообщение ответа: "GET method error"</li>
+                                <li class="code_massage">Ошибка сервера при запросе к базе данных. Запрос к серверу отправлен методом PUT - код ответа: 502, сообщение ответа: "PUT method error"</li>
+                                <li class="code_massage">Ошибка сервера при запросе к базе данных. Запрос к серверу отправлен методом DELETE - код ответа: 502, сообщение ответа: "DELETE method error"</li>
+                                <li class="code_massage">Ошибка сервера при запросе к базе данных. Запрос к серверу отправлен методом GET с ID - код ответа: 502, сообщение ответа: "GET_ID method error"</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="item_option">
+                    <div class="wrapper_description">
+                        <h4 class="header_description">
+                            GET
+                        </h4>
+                        <div class="body_description">
+                            <div class="text_description">
+                                Получаем все алгоритмы с записями из базы данных в формате JSON
+                            </div>
+                            <div class="server_input">
+                                <div class="server_input_header">
+                                    Запрос отправляется методом GET без параметров и с пустым телом запроса.
+                                </div>
+                            </div>
+                            <div class="server_output">
+                                <div class="server_output_header">
+                                    Возращаемые данные с сервера
+                                </div>
+                                <div class="wrapper_json">
+                                      <pre>
+массив с данными =
+[
+    {
+        id: идентификатор алгоритма,
+        name: имя алгоритма
+    },
+    {}...
+]
+                                </pre>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="item_option">
+                    <div class="wrapper_description">
+                        <h4 class="header_description">
+                            GET с параметрами ID
+                        </h4>
+                        <div class="body_description">
+                            <div class="text_description">
+                                Получаем конкретный алгоритм по его ID из базы данных в формате JSON
+                            </div>
+                            <div class="server_input">
+                                <div class="server_input_header">
+                                    Запрос отправляется методом GET c параметром ID алгоритма и с пустым телом запроса.
+                                </div>
+                            </div>
+                            <div class="server_output">
+                                <div class="server_output_header">
+                                    Возращаемые данные с сервера
+                                </div>
+                                <div class="wrapper_json">
+                                      <pre>
+{
+    id: идентификатор алгоритма,
+    name: имя алгоритма
+    records : массив с записями
+}
+массив с записями =
+[
+    {
+        done: false или true - выполнена ли запись,
+        text: текст одной записи
+    },
+    {}...
+]
+                                </pre>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="item_option">
+                    <div class="wrapper_description">
+                        <h4 class="header_description">
+                            POST
+                        </h4>
+                        <div class="body_description">
+                            <div class="text_description">
+                                Добавляем в базу данных новый алгоритм
+                            </div>
+                            <div class="server_input">
+                                <div class="server_input_header">
+                                    Запрос отправляется методом POST и с заполненным телом запроса.
+                                </div>
+                                <div class="wrapper_json">
+                                      <pre>
+{
+     id: "",
+     name: имя алгоритма,
+     records : массив с записями
+}
+массив с записями =
+[
+    {
+        done: false или true - выполнена ли запись,
+        text: текст одной записи
+    },
+    {}...
+]
+                                </pre>
+                                </div>
+                            </div>
+                            <div class="server_output">
+                                <div class="server_output_header">
+                                    Ответ, возвращаемый с сервера не имеет тела, но при этом имеет заголовок Location,
+                                    в котором указа URL новосозданного ресурса (&Lt; имя сервера&Gt;/?id=&Lt;id нового алгоритма&Gt;)
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="item_option">
+                    <div class="wrapper_description">
+                    <h4 class="header_description">
+                        PUT
+                    </h4>
+                    <div class="body_description">
+                        <div class="text_description">
+                            Обновляем уже существующий алгоритм в базе данных
+                        </div>
+                        <div class="server_input">
+                            <div class="server_input_header">
+                                Запрос отправляется методом PUT и с заполненным телом запроса.
+                            </div>
+                            <div class="wrapper_json">
+                                      <pre>
+{
+     id: "",
+     name: имя алгоритма,
+     records : массив с записями
+}
+массив с записями =
+[
+    {
+        done: false или true - выполнена ли запись,
+        text: текст одной записи
+    },
+    {}...
+]
+                                </pre>
+                            </div>
+                        </div>
+                        <div class="server_output">
+                            <div class="server_output_header">
+                                Ответ, возвращаемый с сервера не имеет тела.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+                <div class="item_option">
+                    <div class="wrapper_description">
+                    <h4 class="header_description">
+                        DELETE
+                    </h4>
+                    <div class="body_description">
+                        <div class="text_description">
+                            Удаляет из базы данных существующий алгоритм
+                        </div>
+                        <div class="server_input">
+                            <div class="server_input_header">
+                                Запрос отправляется методом DELETE c параметром ID алгоритма и с пустым телом запроса.
+                            </div>
+                        </div>
+                        <div class="server_output">
+                            <div class="server_output_header">
+                                Ответ, возвращаемый с сервера не имеет тела.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="item_option">
+                    <div class="wrapper_description">
+                    <h4 class="header_description">
+                        OPTIONS
+                    </h4>
+                    <div class="body_description">
+                        <div class="text_description">
+                            Получает список методов, доступных по данному URI.
+                        </div>
+                        <div class="server_input">
+                            <div class="server_input_header">
+                                Запрос отправляется методом OPTIONS без параметров и с пустым телом запроса.
+                            </div>
+                        </div>
+                        <div class="server_output">
+                            <div class="server_output_header">
+                                Ответ, возвращаемый с сервера не имеет тела, но при этом имеет заголовок Allow,
+                                в котором перечислены методы, которыми можно обращаться к серверу.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="message hidden">Ваш алгоритм успешно сохранен</div>
+<script src="source/js/main.js"></script>
+
+</body>
+</html>
